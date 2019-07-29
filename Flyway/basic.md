@@ -41,4 +41,13 @@ spring:
         enabled: false
 ```
 
+## どのディレクトリ以下のsqlを実行するのかを決めたい
+例ではresources/db/migration/migrateとdevelopを実行
+テストではこれだけとか、ステージ本番ではこれだけとかを制御できる
+
+```
+  flyway:
+    locations: classpath:/db/migration,classpath:/db/develop
+```
+
 
