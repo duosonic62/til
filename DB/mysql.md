@@ -25,3 +25,18 @@ GRANT SELECT, INSERT, UPDATE ON database.* TO 'role_name';
 ```sql
 GRANT 'role_name'@'%' TO 'user_name'@'%';
 ```
+
+### 権限とかの確認
+割り当ての確認
+```sql
+SELECT * FROM mysql.role_edges;
+```
+
+権限の確認
+```sql
+SELECT * FROM information_schema.user_privileges;   -- グローバルレベル権限のリスト
+SELECT * FROM information_schema.schema_privileges; -- データベースレベル権限のリスト
+SELECT * FROM information_schema.table_privileges;  -- テーブルレベル権限のリスト
+SELECT * FROM information_schema.column_privileges; -- カラムレベル権限のリスト
+SELECT * FROM information_schema.user_privileges WHERE GRANTEE='\'user_name\'@\'%\''; -- 絞り込み
+```
