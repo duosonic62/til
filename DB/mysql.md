@@ -40,3 +40,14 @@ SELECT * FROM information_schema.table_privileges;  -- テーブルレベル権�
 SELECT * FROM information_schema.column_privileges; -- カラムレベル権限のリスト
 SELECT * FROM information_schema.user_privileges WHERE GRANTEE='\'user_name\'@\'%\''; -- 絞り込み
 ```
+
+## Export
+
+### csv
+csvにテーブル情報を出力する場合は、以下のように設定する。
+```sql
+SELECT * FROM table
+  INTO OUTFILE '/output/output.csv'
+  FIELDS TERMINATED BY ','
+  OPTIONALLY ENCLOSED BY '"';
+```
