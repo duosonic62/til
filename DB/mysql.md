@@ -51,3 +51,8 @@ SELECT * FROM table
   FIELDS TERMINATED BY ','
   OPTIONALLY ENCLOSED BY '"';
 ```
+
+### Dumpfile
+```sql
+mysqldump -h rdsのホスト -u ユーザ名 -p DB名 > ./出力ファイル
+```
