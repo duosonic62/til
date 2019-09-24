@@ -56,3 +56,20 @@ SELECT * FROM table
 ```sql
 mysqldump -h rdsのホスト -u ユーザ名 -p DB名 > ./出力ファイル
 ```
+
+### RDSでdumpfileで復元
+[参考](https://qiita.com/hikey/items/ab5fca33849d3e3929cb)
+
+* dumpファイルの生成
+```sql
+mysqldump -uuser_name -p -hhost_name --quick --single-transaction database_name　| sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' > dump.sql
+```
+
+* リストア
+RDSのパラメータストアでlog_bin_trust_finction_creatorsを1に設定
+
+```sql
+mysql -uuser_name -p -hhost_name database_name < dump.sql
+```
+
+
